@@ -6,8 +6,15 @@ export default defineConfig({
   model: {},
   initialState: {},
   request: {},
+  proxy: {
+    '/api': {
+      'target': 'http://110.40.181.41:9900/',
+      'changeOrigin': true,
+      'pathRewrite': { '^/api' : '' },
+    }
+  },
   layout: {
-    title: '@umijs/max',
+    title: '数据分析',
   },
   routes: [
     {
@@ -15,20 +22,20 @@ export default defineConfig({
       redirect: '/home',
     },
     {
-      name: '首页',
+      name: '上传文件',
       path: '/home',
       component: './Home',
     },
     {
-      name: '权限演示',
+      name: '显示数据',
       path: '/access',
       component: './Access',
     },
-    {
-        name: ' CRUD 示例',
-        path: '/table',
-        component: './Table',
-    },
+    // {
+    //     name: ' CRUD 示例',
+    //     path: '/table',
+    //     component: './Table',
+    // },
   ],
   npmClient: 'pnpm',
 });
